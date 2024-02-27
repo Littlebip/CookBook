@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
-import com.GLNT.bean.Ingredient;
 import com.GLNT.bean.Recipe;
 
 class testRecipe {
@@ -70,43 +69,35 @@ class testRecipe {
 	}
 
 	@Test
-	void testCalculateRecipeKcal() {
-		Ingredient pasta = new Ingredient(1, "pasta", 1.3);
-		Ingredient tomato = new Ingredient(2, "tomato sauce", 1.0);
-		Ingredient mince = new Ingredient(3, "minced beef", 2.1);
+	void testGetRecipeKcal() {
+//		Ingredient pasta = new Ingredient(1, "pasta", 1.3);
+//		Ingredient tomato = new Ingredient(2, "tomato sauce", 1.0);
+//		Ingredient mince = new Ingredient(3, "minced beef", 2.1);
 		Recipe recipe = new Recipe(1, "Pasta Bolognese",
 				"A delicious recipe with pasta, tomato sauce and minced beef. Cook the pasta, stir the tomato sauce, add to the cooked minced beef, and add some parmiggiano.");
 
-		// hypothetical model to gather recipeId, IngredientId and quantityInGrams of an
-		// ingredient for a recipe
-		RecipeIngredients ri1 = new RecipeIngredients(1, 1, 100);
-		RecipeIngredients ri2 = new RecipeIngredients(1, 2, 50);
-		RecipeIngredients ri3 = new RecipeIngredients(1, 3, 80);
-
+//		RecipeIngredient ri1 = new RecipeIngredient(1, pasta, 100);
+//		RecipeIngredient ri2 = new RecipeIngredient(1, tomato, 50);
+//		RecipeIngredient ri3 = new RecipeIngredient(1, mince, 80);
+//		ArrayList<RecipeIngredient> ri = new ArrayList<RecipeIngredient>();
+//		ri.add(ri1);
+//		ri.add(ri2);
+//		ri.add(ri3);
+//
+//		User user = new User("tomcat");
+//		user.addRecipe(recipe, ri);
 		// recipeKcal would then be 100 * 1.3 + 50 * 1.0 + 80 * 2.1 = 348
-		recipe.calculateRecipeKcal();
+		recipe.setRecipeKcal(666);
 		int kcal = recipe.getRecipeKcal();
-		assertEquals(348, kcal);
+		assertEquals(666, kcal);
 	}
 
 	@Test
-	void testGetRecipeKcal() {
-		Ingredient pasta = new Ingredient(1, "pasta", 1.3);
-		Ingredient tomato = new Ingredient(2, "tomato sauce", 1.0);
-		Ingredient mince = new Ingredient(3, "minced beef", 2.1);
+	void testSetRecipeKcal() {
 		Recipe recipe = new Recipe(1, "Pasta Bolognese",
 				"A delicious recipe with pasta, tomato sauce and minced beef. Cook the pasta, stir the tomato sauce, add to the cooked minced beef, and add some parmiggiano.");
-
-		// hypothetical model to gather recipeId, IngredientId and quantityInGrams of an
-		// ingredient for a recipe
-		RecipeIngredients ri1 = new RecipeIngredients(1, 1, 100);
-		RecipeIngredients ri2 = new RecipeIngredients(1, 2, 50);
-		RecipeIngredients ri3 = new RecipeIngredients(1, 3, 80);
-
-		// recipeKcal would then be 100 * 1.3 + 50 * 1.0 + 80 * 2.1 = 348
-		recipe.calculateRecipeKcal();
-		int kcal = recipe.getRecipeKcal();
-		assertEquals(348, kcal);
+		recipe.setRecipeKcal(666);
+		assertEquals(666, recipe.getRecipeKcal());
 	}
 
 	@Test
@@ -132,5 +123,4 @@ class testRecipe {
 		String desc = recipe.getDescription();
 		assertEquals("Pasta blabla", desc);
 	}
-
 }

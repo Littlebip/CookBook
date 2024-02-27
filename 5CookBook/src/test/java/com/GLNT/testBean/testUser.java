@@ -7,7 +7,9 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
+import com.GLNT.bean.Ingredient;
 import com.GLNT.bean.Recipe;
+import com.GLNT.bean.RecipeIngredient;
 import com.GLNT.bean.User;
 
 class testUser {
@@ -98,7 +100,10 @@ class testUser {
 	void addRecipe() {
 		User user = new User();
 		Recipe re = new Recipe();
-		user.addRecipe(re);
+		RecipeIngredient ri = new RecipeIngredient(1, new Ingredient(1, "sugar", 7), 50);
+		ArrayList<RecipeIngredient> ril = new ArrayList<RecipeIngredient>();
+		ril.add(ri);
+		user.addRecipe(re, ril);
 		ArrayList<Recipe> recs = user.getRecipes();
 		assertEquals(1, recs.size());
 	}
@@ -112,5 +117,6 @@ class testUser {
 		user.setRecipes(recipes);
 		Recipe rec = user.seeOneRecipe(1);
 		assertEquals("Pasta", rec.getTitle());
+		// test is red now because not yet implemented
 	}
 }

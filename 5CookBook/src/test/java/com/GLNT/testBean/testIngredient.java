@@ -27,7 +27,7 @@ class testIngredient {
 		Ingredient ing = new Ingredient(12, "yam", 1.3);
 		assertEquals(12, ing.getId());
 		assertEquals("yam", ing.getName());
-		assertEquals(120, ing.getKcalPerGram());
+		assertEquals(1.3, ing.getKcalPerGram());
 	}
 
 	@Test
@@ -48,6 +48,6 @@ class testIngredient {
 	void testGetKcal() {
 		Ingredient ing = new Ingredient(12, "yam", 1.2);
 		double kcal = ing.getKcalPerGram();
-		assertEquals(120, kcal);
+		assertEquals(1.2, kcal);
 	}
 }
