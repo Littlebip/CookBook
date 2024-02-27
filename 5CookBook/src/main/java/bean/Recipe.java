@@ -7,7 +7,7 @@ public class Recipe {
 	private String title;
 	private String description;
 	private int recipeKcal;
-	private ArrayList<RecipeIngredient> recipeIngredients;
+	private ArrayList<RecipeIngredient> recipeIngredients=new ArrayList <RecipeIngredient>();
 
 	// constructors
 	public Recipe() {
@@ -29,17 +29,26 @@ public class Recipe {
 
 	// methods
 	
-	public void addRecipeIngredient (RecipeIngredient recipeIngredient) {
-		recipeIngredients.add(recipeIngredient);
-	}
-	public void calculateRecipeKcal() {
-		
-		for(RecipeIngredient recipeIngredient: recipeIngredients) {
-			
-			//int RecipeKcal =  * recipeIngredient.getQuantity();
-		}
+	public Recipe(String string, String string2, Ingredient[] ingredients) {
+		// TODO Auto-generated constructor stub
 	}
 
+	public void addRecipeIngredient (Ingredient ingredient,int quantite) {
+		RecipeIngredient ri= new 	RecipeIngredient(this,ingredient, quantite);
+		this.recipeIngredients.add(ri);
+	}
+	
+	
+	public int calculateRecipeKcal () {
+        int totalKcal=0;
+        
+        for (RecipeIngredient recipeIngredient : recipeIngredients) {
+        	totalKcal+= recipeIngredient.getQuantity()*recipeIngredient.getIngredient().getKcalPerGram();
+        }
+        return totalKcal;
+    }
+	
+	
 	// setters and getters
 	public int getId() {
 		return id;
