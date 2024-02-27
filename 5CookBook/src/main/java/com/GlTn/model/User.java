@@ -1,5 +1,6 @@
 package com.GlTn.model;
 
+
 public class User {
 	private int Id;
 	private String username;
@@ -9,7 +10,10 @@ public class User {
 	
 	public void isConnected() {}
 	
-	public void addRecip() {};
+	public void addRecip() {
+		
+		
+	};
 	public void seeOneRecipe() {}
 
 	public int getId() {

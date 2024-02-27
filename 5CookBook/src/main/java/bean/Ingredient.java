@@ -25,6 +25,7 @@ public class Ingredient {
 	}
 
 	// getters
+	
 	public int getId() {
 		return id;
 	}

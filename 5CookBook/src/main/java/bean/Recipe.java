@@ -1,10 +1,13 @@
 package bean;
 
+import java.util.ArrayList;
+
 public class Recipe {
 	private int id;
 	private String title;
 	private String description;
 	private int recipeKcal;
+	private ArrayList<RecipeIngredient> recipeIngredients;
 
 	// constructors
 	public Recipe() {
@@ -25,8 +28,16 @@ public class Recipe {
 	}
 
 	// methods
+	
+	public void addRecipeIngredient (RecipeIngredient recipeIngredient) {
+		recipeIngredients.add(recipeIngredient);
+	}
 	public void calculateRecipeKcal() {
-		// TODO
+		
+		for(RecipeIngredient recipeIngredient: recipeIngredients) {
+			
+			//int RecipeKcal =  * recipeIngredient.getQuantity();
+		}
 	}
 
 	// setters and getters
