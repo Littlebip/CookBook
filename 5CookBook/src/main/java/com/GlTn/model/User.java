@@ -1,15 +1,23 @@
 package com.GlTn.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import bean.Recipe;
+
 public class User {
 	private int Id;
 	private String username;
 	private boolean connexionStatuts;
-	private ArrayList<Recipe> recipes;
+	private List <Recipe> recipes = new ArrayList <Recipe>();
 
 	
 	public void isConnected() {}
 	
-	public void addRecip() {};
+	public void addRecip() {
+		
+		
+	};
 	public void seeOneRecipe() {}
 
 	public int getId() {
@@ -34,7 +42,7 @@ public class User {
 		this.connexionStatuts = connexionStatuts;
 	}
 
-	public ArrayList<Recipe> getRecipes() {
+	public List<Recipe> getRecipes() {
 		return recipes;
 	}
 
