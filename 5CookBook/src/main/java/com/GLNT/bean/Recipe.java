@@ -1,4 +1,4 @@
-package bean;
+package com.GLNT.bean;
 
 public class Recipe {
 	private int id;
@@ -11,15 +11,15 @@ public class Recipe {
 		super();
 	}
 
-	public Recipe(String title, String description, int recipeKcal) {
+	public Recipe(String title, String description) {
 		super();
 		this.title = title;
 		this.description = description;
-		this.recipeKcal = recipeKcal;
 	}
 
-	public Recipe(String title, String description) {
+	public Recipe(int id, String title, String description) {
 		super();
+		this.id = id;
 		this.title = title;
 		this.description = description;
 	}
