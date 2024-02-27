@@ -68,7 +68,6 @@ class testRecipeIngredient {
 	void testSetQuantityInGrams() {
 		Ingredient ing = new Ingredient(1, "sauce", 1.1);
 		RecipeIngredient ri = new RecipeIngredient(1, ing, 100);
-
 		ri.setQuantityInGrams(150);
 		int quantity = ri.getQuantityInGrams();
 		assertEquals(150, quantity);
