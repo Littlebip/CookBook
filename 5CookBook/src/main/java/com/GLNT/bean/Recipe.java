@@ -2,11 +2,30 @@ package com.GLNT.bean;
 
 import java.util.ArrayList;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "recipe")
 public class Recipe {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column(name = "title", nullable = true)
 	private String title;
+
+	@Column(name = "description", nullable = true)
 	private String description;
+
+	@Column(name = "recipe_kcal", nullable = true)
 	private int recipeKcal;
+
+	// TODO
 	private ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<RecipeIngredient>();
 
 	// constructors
