@@ -1,23 +1,23 @@
-package bean;
+package com.GLNT.bean;
 
 public class Ingredient {
 	// attributes
 	private int id;
 	private String name;
-	private int kcalPerGram;
+	private double kcalPerGram;
 
 	// constructors
 	public Ingredient() {
 		super();
 	}
 
-	public Ingredient(String name, int kcalPerGram) {
+	public Ingredient(String name, double kcalPerGram) {
 		super();
 		this.name = name;
 		this.kcalPerGram = kcalPerGram;
 	}
 
-	public Ingredient(int id, String name, int kcalPerGram) {
+	public Ingredient(int id, String name, double kcalPerGram) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -25,7 +25,6 @@ public class Ingredient {
 	}
 
 	// getters
-	
 	public int getId() {
 		return id;
 	}
@@ -34,7 +33,7 @@ public class Ingredient {
 		return name;
 	}
 
-	public int getKcalPerGram() {
+	public double getKcalPerGram() {
 		return kcalPerGram;
 	}
 
