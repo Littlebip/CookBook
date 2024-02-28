@@ -23,22 +23,32 @@ public class MainForTesting {
 //
 //		System.out.println(pasta);
 
-		new HibernateFactoryTool();
-		SessionFactory f = HibernateFactoryTool.getSessionFactory();
-		Session session = f.openSession();
-		Transaction t = session.beginTransaction();
+		try {
+			new HibernateFactoryTool();
+			SessionFactory f = HibernateFactoryTool.getSessionFactory();
+			System.out.println("got the session factory...");
 
-		// CREATE
-		Recipe recipe = new Recipe();
-//		recipe.setId(1);
-		recipe.setTitle("pasta");
-		recipe.setDescription("a great recipe");
-		session.save(recipe);
-		System.out.println(recipe);
-
-		t.commit();
-		f.close();
-		session.close();
+			try (Session session = f.openSession()) { // "try-with-resources" statement makes the session automatically
+														// close at the end of the block
+				System.out.println("opened session...");
+				Transaction t = session.beginTransaction();
+				System.out.println("began transaction...");
+				// CREATE
+				Recipe recipe = new Recipe();
+				recipe.setTitle("pasta");
+				recipe.setDescription("a great recipe");
+				System.out.println("created recipe locally...");
+				session.save(recipe);
+				System.out.println("persisted recipe...");
+				System.out.println(recipe);
+				t.commit();
+				System.out.println("committed changes...");
+			}
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			HibernateFactoryTool.shutdown();
+		}
 	}
 
 }
