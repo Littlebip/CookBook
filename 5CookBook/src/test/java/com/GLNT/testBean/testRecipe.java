@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.junit.jupiter.api.Test;
 
+import com.GLNT.bean.Ingredient;
 import com.GLNT.bean.Recipe;
 
 class testRecipe {
@@ -70,23 +71,8 @@ class testRecipe {
 
 	@Test
 	void testGetRecipeKcal() {
-//		Ingredient pasta = new Ingredient(1, "pasta", 1.3);
-//		Ingredient tomato = new Ingredient(2, "tomato sauce", 1.0);
-//		Ingredient mince = new Ingredient(3, "minced beef", 2.1);
 		Recipe recipe = new Recipe(1, "Pasta Bolognese",
 				"A delicious recipe with pasta, tomato sauce and minced beef. Cook the pasta, stir the tomato sauce, add to the cooked minced beef, and add some parmiggiano.");
-
-//		RecipeIngredient ri1 = new RecipeIngredient(1, pasta, 100);
-//		RecipeIngredient ri2 = new RecipeIngredient(1, tomato, 50);
-//		RecipeIngredient ri3 = new RecipeIngredient(1, mince, 80);
-//		ArrayList<RecipeIngredient> ri = new ArrayList<RecipeIngredient>();
-//		ri.add(ri1);
-//		ri.add(ri2);
-//		ri.add(ri3);
-//
-//		User user = new User("tomcat");
-//		user.addRecipe(recipe, ri);
-		// recipeKcal would then be 100 * 1.3 + 50 * 1.0 + 80 * 2.1 = 348
 		recipe.setRecipeKcal(666);
 		int kcal = recipe.getRecipeKcal();
 		assertEquals(666, kcal);
@@ -122,5 +108,32 @@ class testRecipe {
 		recipe.setDescription("Pasta blabla");
 		String desc = recipe.getDescription();
 		assertEquals("Pasta blabla", desc);
+	}
+
+	@Test
+	void testAddRecipeIngredient() {
+		Recipe recipe = new Recipe();
+		Ingredient ing = new Ingredient();
+		recipe.addRecipeIngredient(ing, 100);
+		assertEquals(1, recipe.getRecipeIngredients().size());
+	}
+
+	@Test
+	void testGetRecipeIngredients() {
+		Recipe recipe = new Recipe();
+		Ingredient ing = new Ingredient();
+		recipe.addRecipeIngredient(ing, 100);
+		assertEquals(1, recipe.getRecipeIngredients().size());
+	}
+
+	@Test
+	void calculateRecipeKcal() {
+		Recipe recipe = new Recipe();
+		Ingredient ing = new Ingredient("flour", 2.1);
+		recipe.addRecipeIngredient(ing, 100);
+		recipe.calculateRecipeKcal();
+		int cals = recipe.getRecipeKcal();
+		assertEquals(210, cals);
+
 	}
 }

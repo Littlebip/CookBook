@@ -1,24 +1,30 @@
 package com.GLNT.bean;
 
 public class RecipeIngredient {
-	private int recipeId;
+//	private int recipeId;
 	private Ingredient ingredient;
 	private int quantityInGrams;
 
-	public RecipeIngredient(int recipeId, Ingredient ingredient, int quantityInGrams) {
+//	public RecipeIngredient(int recipeId, Ingredient ingredient, int quantityInGrams) {
+//		super();
+//		this.recipeId = recipeId;
+//		this.ingredient = ingredient;
+//		this.quantityInGrams = quantityInGrams;
+//	}
+
+//	public int getRecipeId() {
+//		return recipeId;
+//	}
+
+	public RecipeIngredient(Ingredient ingredient, int quantityInGrams) {
 		super();
-		this.recipeId = recipeId;
 		this.ingredient = ingredient;
 		this.quantityInGrams = quantityInGrams;
 	}
 
-	public int getRecipeId() {
-		return recipeId;
-	}
-
-	public void setRecipeId(int recipeId) {
-		this.recipeId = recipeId;
-	}
+//	public void setRecipeId(int recipeId) {
+//		this.recipeId = recipeId;
+//	}
 
 	public int getQuantityInGrams() {
 		return quantityInGrams;
