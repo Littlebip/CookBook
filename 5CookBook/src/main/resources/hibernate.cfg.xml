@@ -11,13 +11,13 @@
 			com.mysql.cj.jdbc.Driver
 		</property>
 		<property name="hibernate.connection.url">
-			<!-- TODO -->
+			jdbc:mysql://localhost:3306/cookbookproject?serverTimezone=UTC
 		</property>
 		<property name="hibernate.connection.username">
-			<!-- TODO -->
+			root
 		</property>
 		<property name="hibernate.connection.password">
-			<!-- TODO -->
+			JEfaisdestables8!
 		</property>
 		<mapping class="com.GLNT.bean.Recipe" />
 		<mapping class="com.GLNT.bean.RecipeIngredient" />

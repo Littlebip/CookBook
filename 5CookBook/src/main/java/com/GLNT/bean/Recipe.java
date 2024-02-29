@@ -23,7 +23,7 @@ public class Recipe {
 	@Column(name = "title", nullable = true)
 	private String title;
 
-	@Column(name = "description", nullable = true)
+	@Column(name = "description", nullable = true, columnDefinition = "text")
 	private String description;
 
 	@Column(name = "recipe_kcal", nullable = true)
@@ -69,6 +69,10 @@ public class Recipe {
 	public void addRecipeIngredient(Ingredient ingredient, int quantityInGrams) {
 		RecipeIngredient ri = new RecipeIngredient(ingredient, quantityInGrams);
 		this.recipeIngredients.add(ri);
+	}
+
+	public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
+		this.recipeIngredients.add(recipeIngredient);
 	}
 
 	public void calculateRecipeKcal() {
@@ -119,8 +123,8 @@ public class Recipe {
 	// toString
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", title=" + title + ", description=" + description + ", recipeKcal=" + recipeKcal
-				+ ", recipeIngredients=" + recipeIngredients + "]";
+		return "Recipe [id=" + id + ", title=" + title + ", recipeKcal=" + recipeKcal + ", recipeIngredients="
+				+ recipeIngredients + "]";
 	}
 
 }
