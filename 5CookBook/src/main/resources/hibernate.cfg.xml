@@ -3,7 +3,25 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
 	<session-factory>
-		<!-- List of XML mapping files -->
-		<mapping resource="recipe.hbm.xml" />
+		<property name="hbm2ddl.auto">create</property><!-- mode create -->
+		<property name="hibernate.dialect">
+			org.hibernate.dialect.MySQL5Dialect
+		</property>
+		<property name="hibernate.connection.driver_class">
+			com.mysql.cj.jdbc.Driver
+		</property>
+		<property name="hibernate.connection.url">
+			<!-- TODO -->
+		</property>
+		<property name="hibernate.connection.username">
+			<!-- TODO -->
+		</property>
+		<property name="hibernate.connection.password">
+			<!-- TODO -->
+		</property>
+		<mapping class="com.GLNT.bean.Recipe" />
+		<mapping class="com.GLNT.bean.RecipeIngredient" />
+		<mapping class="com.GLNT.bean.Ingredient" />
+		<mapping class="com.GLNT.bean.User" />
 	</session-factory>
 </hibernate-configuration>

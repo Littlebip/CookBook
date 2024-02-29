@@ -1,14 +1,33 @@
 package com.GLNT.bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "user")
 public class User {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
+	@Column(name = "username", nullable = false)
 	private String username;
+
+	@Column(name = "connexion_status", nullable = true)
 	private boolean connexionStatus;
-	private ArrayList<Recipe> recipes;
-	// après check : meilleure pratique d'instancier l'arraylist dans
-	// le constructor pour l'encapsulation et l'économie de ressources
+
+	@OneToMany
+	@JoinColumn(name = "user_id")
+	private List<Recipe> recipes;
 
 	public User() {
 		super();
@@ -59,7 +78,7 @@ public class User {
 		return connexionStatus;
 	}
 
-	public ArrayList<Recipe> getRecipes() {
+	public List<Recipe> getRecipes() {
 		return recipes;
 	}
 

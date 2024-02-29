@@ -1,12 +1,16 @@
 package com.GLNT.bean;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -25,18 +29,25 @@ public class Recipe {
 	@Column(name = "recipe_kcal", nullable = true)
 	private int recipeKcal;
 
-	// TODO
-	private ArrayList<RecipeIngredient> recipeIngredients = new ArrayList<RecipeIngredient>();
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
+
+	@OneToMany
+	@JoinColumn(name = "recipe_id")
+	private List<RecipeIngredient> recipeIngredients;
 
 	// constructors
 	public Recipe() {
 		super();
+		this.recipeIngredients = new ArrayList<RecipeIngredient>();
 	}
 
 	public Recipe(String title, String description) {
 		super();
 		this.title = title;
 		this.description = description;
+		this.recipeIngredients = new ArrayList<RecipeIngredient>();
 	}
 
 	public Recipe(int id, String title, String description) {
@@ -44,6 +55,7 @@ public class Recipe {
 		this.id = id;
 		this.title = title;
 		this.description = description;
+		this.recipeIngredients = new ArrayList<RecipeIngredient>();
 	}
 
 	// methods
@@ -100,7 +112,7 @@ public class Recipe {
 		this.recipeKcal = recipeKcal;
 	}
 
-	public ArrayList<RecipeIngredient> getRecipeIngredients() {
+	public List<RecipeIngredient> getRecipeIngredients() {
 		return recipeIngredients;
 	}
 
@@ -108,6 +120,7 @@ public class Recipe {
 	@Override
 	public String toString() {
 		return "Recipe [id=" + id + ", title=" + title + ", description=" + description + ", recipeKcal=" + recipeKcal
-				+ "]";
+				+ ", recipeIngredients=" + recipeIngredients + "]";
 	}
+
 }
