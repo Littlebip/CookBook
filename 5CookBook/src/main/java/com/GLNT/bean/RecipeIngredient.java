@@ -1,30 +1,41 @@
 package com.GLNT.bean;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "recipe_ingredient")
 public class RecipeIngredient {
-//	private int recipeId;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@ManyToOne
+	@JoinColumn(name = "recipe_id")
+	private Recipe recipe;
+
+	@ManyToOne
+	@JoinColumn(name = "ingredient_id")
 	private Ingredient ingredient;
+
+	@Column(name = "quantity_in_grams")
 	private int quantityInGrams;
 
-//	public RecipeIngredient(int recipeId, Ingredient ingredient, int quantityInGrams) {
-//		super();
-//		this.recipeId = recipeId;
-//		this.ingredient = ingredient;
-//		this.quantityInGrams = quantityInGrams;
-//	}
-
-//	public int getRecipeId() {
-//		return recipeId;
-//	}
+	public RecipeIngredient() {
+		super();
+	}
 
 	public RecipeIngredient(Ingredient ingredient, int quantityInGrams) {
 		super();
 		this.ingredient = ingredient;
 		this.quantityInGrams = quantityInGrams;
 	}
-
-//	public void setRecipeId(int recipeId) {
-//		this.recipeId = recipeId;
-//	}
 
 	public int getQuantityInGrams() {
 		return quantityInGrams;
@@ -40,6 +51,11 @@ public class RecipeIngredient {
 
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
+	}
+
+	@Override
+	public String toString() {
+		return "RecipeIngredient [ingredient=" + ingredient + ", quantityInGrams=" + quantityInGrams + "]";
 	}
 
 }
