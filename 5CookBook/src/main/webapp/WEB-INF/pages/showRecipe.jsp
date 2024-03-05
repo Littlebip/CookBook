@@ -10,5 +10,7 @@
 <body>
 	<h1>${recipe.getTitle()}</h1>	
 	<p>${recipe.getDescription()}</p>
+	
+	<a href="/5CookBook">Back to homepage</a>
 </body>
 </html>

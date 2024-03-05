@@ -232,8 +232,6 @@ public class DatabasePopulator {
 	private List<User> users = new ArrayList<User>();
 	private List<Recipe> recipes = new ArrayList<Recipe>();
 
-	// TODO : data pour les recettes et lien recipe-user
-
 	public void populateDatabase() {
 		try {
 			SessionFactory f = HibernateFactoryTool.getSessionFactory();
@@ -263,8 +261,8 @@ public class DatabasePopulator {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			HibernateFactoryTool.shutdown();
+//		} finally {
+//			HibernateFactoryTool.shutdown();
 		}
 
 	}

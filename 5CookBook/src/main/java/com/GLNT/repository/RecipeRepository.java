@@ -26,8 +26,8 @@ public class RecipeRepository {
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			HibernateFactoryTool.shutdown();
+//		} finally {
+//			HibernateFactoryTool.shutdown();
 		}
 //		Session session = sessionFactory.getCurrentSession();
 //		session.save(recipe);

@@ -11,14 +11,7 @@ import com.GLNT.bean.Recipe;
 import com.GLNT.repository.RecipeRepository;
 
 @Controller
-public class SpringController {
-//	@GetMapping("/load")
-//	public String loadDatabase() {
-//		DatabasePopulator dp = new DatabasePopulator();
-//		dp.populateDatabase();
-//		return "test";
-//	}
-
+public class RecipeController {
 	@GetMapping("/new-recipe")
 	public String displayRecipeForm(Model model) {
 		model.addAttribute("recipe", new Recipe());
