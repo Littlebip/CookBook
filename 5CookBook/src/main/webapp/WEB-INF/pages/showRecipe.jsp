@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>New recipe form</title>
+<title>${recipe.getTitle()}</title>
 </head>
 <body>
-	<h1>recipe sent </h1>	
-	<%-- ${newRecipe} --%>
+	<h1>${recipe.getTitle()}</h1>	
+	<p>${recipe.getDescription()}</p>
 </body>
 </html>
