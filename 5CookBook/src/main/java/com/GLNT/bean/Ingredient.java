@@ -1,5 +1,6 @@
 package com.GLNT.bean;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -13,7 +14,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "ingredient")
-public class Ingredient {
+public class Ingredient implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7133160030682063207L;
+
 	// attributes
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

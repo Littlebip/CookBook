@@ -1,5 +1,6 @@
 package com.GLNT.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,9 +14,17 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "recipe")
-public class Recipe {
+public class Recipe implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2465279990549617500L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -30,6 +39,7 @@ public class Recipe {
 	private int recipeKcal;
 
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "user_id")
 	private User user;
 

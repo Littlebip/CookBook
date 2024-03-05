@@ -13,7 +13,7 @@
 	<body>
 		<component:navbar />
 		<h1>Homepage</h1>
-		<a href="new-recipe">new recipe</a>
+		<a href="recipes/new">new recipe</a>
 		<a href="load">load database</a>
 		<component:footer />
 	

@@ -1,5 +1,7 @@
 package com.GLNT.bean;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,18 +11,28 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Table(name = "recipe_ingredient")
-public class RecipeIngredient {
+public class RecipeIngredient implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5850865974503448511L;
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "recipe_id")
 	private Recipe recipe;
 
 	@ManyToOne
+	@Cascade(CascadeType.SAVE_UPDATE)
 	@JoinColumn(name = "ingredient_id")
 	private Ingredient ingredient;
 

@@ -1,6 +1,12 @@
 package com.GLNT.bean;
 
-public class Login {
+import java.io.Serializable;
+
+public class Login implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7935574649197787325L;
 	private int id;
 	private String username;
 	private String password;
