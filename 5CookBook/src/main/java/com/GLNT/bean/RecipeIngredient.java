@@ -53,6 +53,15 @@ public class RecipeIngredient {
 		this.ingredient = ingredient;
 	}
 
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+//		recipe.addRecipeIngredient(this);
+	}
+
 	@Override
 	public String toString() {
 		return "RecipeIngredient [ingredient=" + ingredient + ", quantityInGrams=" + quantityInGrams + "]";

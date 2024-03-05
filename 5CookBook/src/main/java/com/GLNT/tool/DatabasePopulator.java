@@ -242,19 +242,19 @@ public class DatabasePopulator {
 				Transaction t = session.beginTransaction();
 //				System.out.println("began transaction...");
 
-				System.out.println("Starting database population...");
+//				System.out.println("Starting database population...");
 				createUsers(session);
-				System.out.println("Created users.");
+//				System.out.println("Created users.");
 
 				createIngredients(session);
-				System.out.println("Created ingredients.");
+//				System.out.println("Created ingredients.");
 
 				createRecipes(session);
-				System.out.println("Created recipes.");
+//				System.out.println("Created recipes.");
 
 				giveRecipeToUser(session);
-				System.out.println("Assigned recipes to users.");
-				System.out.println("Database population ended successfully.");
+//				System.out.println("Assigned recipes to users.");
+//				System.out.println("Database population ended successfully.");
 
 				t.commit();
 //				System.out.println("committed changes...");
@@ -272,7 +272,7 @@ public class DatabasePopulator {
 			User user = new User(username);
 			users.add(user);
 			session.save(user);
-			System.out.println(".");
+//			System.out.println(".");
 		}
 	}
 
@@ -281,7 +281,7 @@ public class DatabasePopulator {
 			Ingredient ing = new Ingredient(entry.getKey(), entry.getValue());
 			ingredients.put(entry.getKey(), ing);
 			session.save(ing);
-			System.out.println(".");
+//			System.out.println(".");
 		}
 	}
 
@@ -298,7 +298,7 @@ public class DatabasePopulator {
 								RecipeIngredient ri = new RecipeIngredient(ing.getValue(), ingredientEntry.getValue());
 								session.save(ri);
 								recipe.addRecipeIngredient(ri);
-								System.out.println(recipe);
+//								System.out.println(recipe);
 								session.saveOrUpdate(recipe);
 							}
 
@@ -308,7 +308,7 @@ public class DatabasePopulator {
 			}
 			recipes.add(recipe);
 			session.saveOrUpdate(recipe);
-			System.out.println(".");
+//			System.out.println(".");
 		}
 	}
 
@@ -317,7 +317,12 @@ public class DatabasePopulator {
 			User user = users.get(index);
 			user.addRecipe(recipes.get(index));
 			session.saveOrUpdate(user);
-			System.out.println(".");
+//			System.out.println(".");
 		}
 	}
+
+	public Map<String, Ingredient> getIngredients() {
+		return ingredients;
+	}
+
 }

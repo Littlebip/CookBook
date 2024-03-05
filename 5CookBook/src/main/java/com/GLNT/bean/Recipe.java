@@ -64,7 +64,7 @@ public class Recipe {
 //		// TODO Auto-generated constructor stub
 //	}
 //
-	// constructor a ajouter
+	// constructor to add
 
 	public void addRecipeIngredient(Ingredient ingredient, int quantityInGrams) {
 		RecipeIngredient ri = new RecipeIngredient(ingredient, quantityInGrams);
@@ -77,7 +77,7 @@ public class Recipe {
 
 	public void calculateRecipeKcal() {
 		double totalKcal = 0;
-		for (RecipeIngredient recipeIngredient : recipeIngredients) {
+		for (RecipeIngredient recipeIngredient : this.recipeIngredients) {
 			totalKcal += recipeIngredient.getQuantityInGrams() * recipeIngredient.getIngredient().getKcalPerGram();
 		}
 		this.recipeKcal = (int) totalKcal;
