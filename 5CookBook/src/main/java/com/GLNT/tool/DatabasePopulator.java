@@ -237,12 +237,12 @@ public class DatabasePopulator {
 	public void populateDatabase() {
 		try {
 			SessionFactory f = HibernateFactoryTool.getSessionFactory();
-			System.out.println("got the session factory...");
+//			System.out.println("got the session factory...");
 
 			try (Session session = f.openSession()) { // "try-with-resources" statement makes the session automatically
 														// close at the end of the block
 				Transaction t = session.beginTransaction();
-				System.out.println("began transaction...");
+//				System.out.println("began transaction...");
 
 				System.out.println("Starting database population...");
 				createUsers(session);
@@ -259,7 +259,7 @@ public class DatabasePopulator {
 				System.out.println("Database population ended successfully.");
 
 				t.commit();
-				System.out.println("committed changes...");
+//				System.out.println("committed changes...");
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());

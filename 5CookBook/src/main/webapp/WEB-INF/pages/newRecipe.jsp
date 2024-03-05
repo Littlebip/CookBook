@@ -17,7 +17,7 @@
 	</form> --%>
 	<form:form modelAttribute="recipe" method="post" action="/5CookBook/save-recipe">
 	<form:input path="title" id="title"/>
-	<form:input path="description" id="description" />
+	<form:input path="description" id="description" value="${recipe.description}"/>
 	<input type="submit" value="create" />
 	
 	</form:form>
@@ -26,5 +26,5 @@
 </html>
 
 <!-- 
-value="${recipe.description}"
+
 value="${recipe.title}" -->
