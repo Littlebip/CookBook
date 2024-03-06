@@ -18,6 +18,11 @@ public class DatabasePopulator {
 	private String[] usersData = { "toutaneCook", "lucileCook" };
 
 	private Map<String, Double> ingredientsData = new HashMap<String, Double>() {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 5359218786665335898L;
+
 		{
 			put("cod", 0.77);
 			put("octopus", 0.81);
@@ -237,28 +242,29 @@ public class DatabasePopulator {
 			SessionFactory f = HibernateFactoryTool.getSessionFactory();
 //			System.out.println("got the session factory...");
 
-			try (Session session = f.openSession()) { // "try-with-resources" statement makes the session automatically
-														// close at the end of the block
-				Transaction t = session.beginTransaction();
+//			try (Session session = f.openSession()) { // "try-with-resources" statement makes the session automatically
+			// close at the end of the block
+			Session session = f.openSession();
+			Transaction t = session.beginTransaction();
 //				System.out.println("began transaction...");
 
 //				System.out.println("Starting database population...");
-				createUsers(session);
+			createUsers(session);
 //				System.out.println("Created users.");
 
-				createIngredients(session);
+			createIngredients(session);
 //				System.out.println("Created ingredients.");
 
-				createRecipes(session);
+			createRecipes(session);
 //				System.out.println("Created recipes.");
 
-				giveRecipeToUser(session);
+			giveRecipeToUser(session);
 //				System.out.println("Assigned recipes to users.");
 //				System.out.println("Database population ended successfully.");
 
-				t.commit();
+			t.commit();
 //				System.out.println("committed changes...");
-			}
+//			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 //		} finally {

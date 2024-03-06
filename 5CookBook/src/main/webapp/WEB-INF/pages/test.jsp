@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="5CookBook/" >back to home</a>
+<a href="/" >back to home</a>
 
 </body>
 </html>

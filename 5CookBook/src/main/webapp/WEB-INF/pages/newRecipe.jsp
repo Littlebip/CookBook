@@ -11,7 +11,7 @@
 <body>
 	<h1>New recipe form</h1>
 
-	<form:form modelAttribute="recipe" method="post" action="/5CookBook/save-recipe">
+	<form:form modelAttribute="recipe" method="post" action="save">
 		<!-- recipe title -->
 		<form:input type="text" path="title" id="title" value="${recipe.title}" placeholder="title"/><br>
 		<!-- recipe description -->
@@ -28,7 +28,7 @@
 					</div>	
 			</c:forEach>
 			
-					
+				<%-- 	
 			
 		</div> --%>
 		<!-- to add additional recipe ingredients -->

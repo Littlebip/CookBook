@@ -4,48 +4,56 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
-
-@Entity
-@Table(name = "recipe")
+//@Entity
+//@Table(name = "recipe")
 public class Recipe implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2465279990549617500L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "title", nullable = true)
+//	@Column(name = "title", nullable = true)
 	private String title;
 
-	@Column(name = "description", nullable = true, columnDefinition = "text")
+//	@Column(name = "description", nullable = true, columnDefinition = "text")
 	private String description;
 
-	@Column(name = "recipe_kcal", nullable = true)
+//	@Column(name = "recipe_kcal", nullable = true)
 	private int recipeKcal;
 
-	@ManyToOne
-	@Cascade(CascadeType.SAVE_UPDATE)
-	@JoinColumn(name = "user_id")
+//	@ManyToOne
+//	@Cascade(CascadeType.SAVE_UPDATE)
+//	@JoinColumn(name = "user_id")
 	private User user;
-
-	@OneToMany
-	@JoinColumn(name = "recipe_id")
+//
+//	@OneToMany
+//	@JoinColumn(name = "recipe_id")
 	private List<RecipeIngredient> recipeIngredients;
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * @param recipeIngredients the recipeIngredients to set
+	 */
+	public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
+	}
 
 	// constructors
 	public Recipe() {

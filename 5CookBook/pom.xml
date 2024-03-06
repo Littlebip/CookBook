@@ -9,12 +9,14 @@
 
 	<properties>
 		<mysql.version>8.0.20</mysql.version>
-		<hibernate.version>5.4.17.Final</hibernate.version>
+		<hibernate.version>4.3.5.Final</hibernate.version>
+		<!--	<hibernate.version>5.4.17.Final</hibernate.version>-->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>5.2.8.RELEASE</spring.version>
-		<!--<spring-data-jpa.version>2.2.8.RELEASE</spring-data-jpa.version>
-		<javax.persistence.version>2.2</javax.persistence.version>-->
-		
+		<spring.version>4.0.3.RELEASE</spring.version>
+		<!--<spring.version>5.2.8.RELEASE</spring.version>-->
+		<!--<spring-data-jpa.version>2.2.8.RELEASE</spring-data-jpa.version>-->
+		<!--<javax.persistence.version>2.2</javax.persistence.version>-->
+
 	</properties>
 
 	<dependencies>
@@ -93,21 +95,56 @@
 			<version>1.2</version>
 		</dependency>
 
-		<!--<dependency>
+		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
+
 		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>jstl</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-dbcp2</artifactId>
+			<version>2.0</version>
+		</dependency>
+
+		<!--<dependency>
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-jpa</artifactId>
 			<version>${spring-data-jpa.version}</version>
-		</dependency>
-		<dependency>
+		</dependency>-->
+		<!--<dependency>
 			<groupId>javax.persistence</groupId>
 			<artifactId>javax.persistence-api</artifactId>
 			<version>${javax.persistence.version}</version>
 		</dependency>-->
+
+		<!-- patch -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.12.5</version>
+		</dependency>
 
 	</dependencies>
 </project>
