@@ -1,6 +1,6 @@
 package com.GLNT.controller;
 
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.GLNT.bean.Ingredient;
 import com.GLNT.bean.Recipe;
 import com.GLNT.bean.RecipeIngredient;
+import com.GLNT.dao.IngredientDao;
 import com.GLNT.dao.RecipeDao;
+import com.GLNT.dao.RecipeIngredientDao;
 import com.GLNT.dao.UserDao;
 
 @Controller
@@ -22,6 +24,11 @@ public class RecipeController {
 //	private Repository<Recipe> recipeRepo;
 
 	// new --> :id --> show
+
+	UserDao userDao = new UserDao();
+	IngredientDao ingredientDao = new IngredientDao();
+	RecipeDao recipeDao = new RecipeDao();
+	RecipeIngredientDao recipeIngredientDao = new RecipeIngredientDao();
 
 	@RequestMapping(value = "/new", method = RequestMethod.GET)
 	public String showRecipeForm(Model model) {
@@ -34,23 +41,24 @@ public class RecipeController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveRecipe(@ModelAttribute("recipe") Recipe recipe, Model model) {
-		System.out.println(recipe);
+//		System.out.println(recipe);
 //		recipeRepo.save(recipe);
 
 		// temporary !
-		UserDao userDao = new UserDao();
 		recipe.setUser(userDao.getById(1));
 
-		RecipeDao recipeDao = new RecipeDao();
 		recipeDao.save(recipe);
 
-		System.out.println(recipe);
+//		System.out.println(recipe);
 		model.addAttribute("recipe", recipe);
 		return "redirect:/recipes/" + recipe.getId();
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public String showRecipe(@PathVariable("id") Long id, Model model) {
+	public String showRecipe(@PathVariable("id") int id, Model model) {
+		Recipe recipe = recipeDao.getById(id);
+		model.addAttribute("recipe", recipe);
+
 //		RecipeIngredient recipeIngredient = new RecipeIngredient();
 //		recipeIngredient.setRecipe(recipe);
 //		model.addAttribute("recipeIngredient", recipeIngredient);
@@ -60,28 +68,29 @@ public class RecipeController {
 //		Map<String, Ingredient> ings = DatabaseController.getIngredients();
 //		model.addAttribute("ingredients", ings);
 
-		// find in DAO the recipe with id {id}
-
-		model.addAttribute("id", id);
-
 		return "showRecipe";
 	}
 
-	@RequestMapping(value = "{id}/ingredients/new", method = RequestMethod.GET)
-	public String showIngredientForm(@PathVariable("id") Long id, Model model,
-			@ModelAttribute("recipe") Recipe recipe) {
+	@RequestMapping(value = "/{id}/ingredients/new", method = RequestMethod.GET)
+	public String showIngredientForm(@PathVariable("id") int id, Model model) {
+		Recipe recipe = recipeDao.getById(id);
 		recipe.getRecipeIngredients().add(new RecipeIngredient());
 
-		Map<String, Ingredient> ings = DatabaseController.getIngredients();
-		model.addAttribute("ingredients", ings);
+		List<Ingredient> ingredientsList = ingredientDao.getAll();
+		model.addAttribute("ingredients", ingredientsList);
 
 		return "newRecipeIngredient";
 	}
 
-	@RequestMapping(value = "{id}/ingredients/save", method = RequestMethod.POST)
-	public String saveRecipeIngredient(@PathVariable("id") Long id, Model model,
-			@ModelAttribute("recipe") Recipe recipe) {
-		System.out.println(recipe);
+	@RequestMapping(value = "/{id}/ingredients/save", method = RequestMethod.POST)
+	public String saveRecipeIngredient(@PathVariable("id") int id, Model model,
+			@ModelAttribute("recipeIngredient") RecipeIngredient recipeIngredient) {
+		Recipe recipe = recipeDao.getById(id);
+		System.out.println(recipeIngredient);
+		recipeIngredient.setRecipe(recipe);
+		recipeIngredientDao.save(recipeIngredient);
+		recipe.addRecipeIngredient(recipeIngredient);
+		recipeDao.save(recipe);
 		return "redirect:/recipes/" + recipe.getId();
 	}
 

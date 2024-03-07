@@ -16,7 +16,9 @@
 					<div class="ingredient-input">
 						<form:select path="recipeIngredients[${status.index}].ingredient.name" id="recipeIngredientName">
 							<form:option value="">Select your recipe ingredients</form:option>
-							<form:options items="${ingredients.values()}" itemValue="name" itemLabel="name"/>
+							<c:forEach items="${ingredientsList}" var="ingredient">
+			                    <form:option value="${ingredient.getName()}">${ingredient.name}</form:option>
+			                </c:forEach>
 						</form:select>
 						<form:input type="number"  path="recipeIngredients[${status.index}].quantityInGrams" id="recipeIngredientQuantity" /><br>
 					</div>	

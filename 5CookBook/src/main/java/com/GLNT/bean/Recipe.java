@@ -61,6 +61,7 @@ public class Recipe implements Serializable {
 		this.title = title;
 		this.description = description;
 		this.user = user;
+		this.recipeIngredients = new ArrayList<RecipeIngredient>();
 	}
 
 	// methods
