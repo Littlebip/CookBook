@@ -21,10 +21,13 @@ public class RecipeDao implements CRUDable<Recipe> {
 
 	@Override
 	public int save(Recipe recipe) {
+		System.out.println("entering recipe save...");
 		if (recipe.getId() == 0) {
 			recipe.setId(recipes.size() + 1);
 		}
+
 		recipes.add(recipe);
+		System.out.println("recipe saved");
 		return recipe.getId();
 	}
 
@@ -35,10 +38,13 @@ public class RecipeDao implements CRUDable<Recipe> {
 
 	@Override
 	public Recipe getById(int id) {
+		System.out.println("entering recipe getbyid...");
 		Recipe r = null;
 		for (Recipe recipe : recipes) {
 			if (recipe.getId() == id) {
 				r = recipe;
+				System.out.println("found recipe");
+				break;
 			}
 		}
 		return r;

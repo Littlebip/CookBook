@@ -16,14 +16,13 @@ import com.GLNT.dao.IngredientDao;
 import com.GLNT.dao.RecipeDao;
 import com.GLNT.dao.RecipeIngredientDao;
 import com.GLNT.dao.UserDao;
+import com.GLNT.tool.RecipeIngredientDto;
 
 @Controller
 @RequestMapping("/recipes")
 public class RecipeController {
 //	@Autowired
 //	private Repository<Recipe> recipeRepo;
-
-	// new --> :id --> show
 
 	UserDao userDao = new UserDao();
 	IngredientDao ingredientDao = new IngredientDao();
@@ -41,7 +40,7 @@ public class RecipeController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveRecipe(@ModelAttribute("recipe") Recipe recipe, Model model) {
-//		System.out.println(recipe);
+		System.out.println(recipe);
 //		recipeRepo.save(recipe);
 
 		// temporary !
@@ -74,24 +73,41 @@ public class RecipeController {
 	@RequestMapping(value = "/{id}/ingredients/new", method = RequestMethod.GET)
 	public String showIngredientForm(@PathVariable("id") int id, Model model) {
 		Recipe recipe = recipeDao.getById(id);
-		recipe.getRecipeIngredients().add(new RecipeIngredient());
-
 		List<Ingredient> ingredientsList = ingredientDao.getAll();
+		RecipeIngredientDto recipeIngredientDto = new RecipeIngredientDto();
+
+//		RecipeIngredient recipeIngredient = new RecipeIngredient();
+//
+//		recipe.addRecipeIngredient(recipeIngredient);
+//		recipeIngredient.setRecipe(recipe);
+//
+//		recipeDao.save(recipe);
+//		recipeIngredientDao.save(recipeIngredient);
+
+		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredients", ingredientsList);
+		model.addAttribute("recipeIngredientDto", recipeIngredientDto);
 
 		return "newRecipeIngredient";
 	}
 
 	@RequestMapping(value = "/{id}/ingredients/save", method = RequestMethod.POST)
-	public String saveRecipeIngredient(@PathVariable("id") int id, Model model,
-			@ModelAttribute("recipeIngredient") RecipeIngredient recipeIngredient) {
+	public String saveRecipeIngredient(@PathVariable("id") int id,
+			@ModelAttribute("recipeIngredientDto") RecipeIngredientDto recipeIngredientDto) {
+
+		System.out.println("arrived in save recipe ingredient post method...");
+
 		Recipe recipe = recipeDao.getById(id);
-		System.out.println(recipeIngredient);
+		RecipeIngredient recipeIngredient = new RecipeIngredient();
+		recipeIngredient.setIngredient(ingredientDao.getById(recipeIngredientDto.getIngredientId()));
 		recipeIngredient.setRecipe(recipe);
+		recipeIngredient.setQuantityInGrams(recipeIngredientDto.getQuantity());
 		recipeIngredientDao.save(recipeIngredient);
+		System.out.println("saved recipe ingredient.");
 		recipe.addRecipeIngredient(recipeIngredient);
 		recipeDao.save(recipe);
-		return "redirect:/recipes/" + recipe.getId();
+		System.out.println("saved recipe ingredient.");
+		return "redirect:/recipes/" + id;
 	}
 
 //	@GetMapping("/new-recipe-ingredient")

@@ -25,7 +25,7 @@
 	</header>
 	<div class="banner-container">
 		<!-- Image de la bannière -->
-		<img src="banner1.jpg" alt="fruits" class="banner-image">
+		<img src="../images/banner1.jpg" alt="fruits" class="banner-image">
 		<!-- Texte sur la bannière -->
 		<div class="banner-text">
 			<p>Chef.</p>
