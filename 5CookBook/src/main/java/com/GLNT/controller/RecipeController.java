@@ -41,7 +41,7 @@ public class RecipeController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveRecipe(@ModelAttribute("recipe") Recipe recipe, Model model) {
-		System.out.println(recipe);
+//		System.out.println(recipe);
 //		recipeRepo.save(recipe);
 
 		// temporary !
@@ -49,7 +49,7 @@ public class RecipeController {
 
 		recipeDao.save(recipe);
 
-		System.out.println(recipe);
+//		System.out.println(recipe);
 		model.addAttribute("recipe", recipe);
 		return "redirect:/recipes/" + recipe.getId();
 	}
