@@ -34,27 +34,6 @@ public class Recipe implements Serializable {
 //	@JoinColumn(name = "recipe_id")
 	private List<RecipeIngredient> recipeIngredients;
 
-	/**
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
-
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	/**
-	 * @param recipeIngredients the recipeIngredients to set
-	 */
-	public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
-		this.recipeIngredients = recipeIngredients;
-	}
-
 	// constructors
 	public Recipe() {
 		super();
@@ -74,6 +53,14 @@ public class Recipe implements Serializable {
 		this.title = title;
 		this.description = description;
 		this.recipeIngredients = new ArrayList<RecipeIngredient>();
+	}
+
+	public Recipe(int id, String title, String description, User user) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.user = user;
 	}
 
 	// methods
@@ -136,6 +123,27 @@ public class Recipe implements Serializable {
 
 	public List<RecipeIngredient> getRecipeIngredients() {
 		return recipeIngredients;
+	}
+
+	/**
+	 * @return the user
+	 */
+	public User getUser() {
+		return user;
+	}
+
+	/**
+	 * @param user the user to set
+	 */
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	/**
+	 * @param recipeIngredients the recipeIngredients to set
+	 */
+	public void setRecipeIngredients(List<RecipeIngredient> recipeIngredients) {
+		this.recipeIngredients = recipeIngredients;
 	}
 
 	// toString

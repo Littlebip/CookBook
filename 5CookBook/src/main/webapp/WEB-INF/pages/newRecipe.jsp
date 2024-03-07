@@ -5,6 +5,72 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>New Recipe</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+</head>
+
+<body class="bRecipe">
+
+    <div class="banner-container">
+        <!-- Image de la bannière -->
+        <img src="images/banner2.jpg" alt="fruits" class="banner-image">
+        <!-- Texte sur la bannière -->
+        <div class="banner-text">
+            <p>Chef, tell me more</p>
+        </div>
+    </div>
+    <div class="form">
+    <form:form modelAttribute="recipe" method="post" action="save">
+		<!-- recipe title -->
+		<label for="recipeTitle">Recipe title :</label><br>
+		<form:input type="text" path="title" id="recipeTitle" name="recipeTitle" value="${recipe.title}" placeholder="title"/><br>
+		<!-- recipe description -->
+		<label for="recipeInstructions">Instructions</label><br>
+		<form:textarea path="description" id="recipeInstructions" name="recipeInstructions" rows="4" cols="50" value="${recipe.description}" placeholder="description"/><br>
+		
+	<input type="submit" value="create a recipe" />
+	</form:form>
+	
+	
+    <%-- <form action="" method="post">
+        <label for="recipeTitle">Recipe title :</label><br>
+        <input type="text" id="recipeTitle" name="recipeTitle"><br><br> --%>
+        
+        <!-- ingredients -->
+        <!-- <label for="ingredients">Ingredients </label><br>
+        <select id="ingredients" name="ingredients" multiple>
+            Remplacer par ingredient de la  base de données
+            <option value="ingredient1">Ingredient 1</option>
+            <option value="ingredient2">Ingredient 2</option>
+            <option value="ingredient3">Ingredient 3</option>
+        </select><br><br> -->
+
+        <%-- <label for="recipeInstructions">Instructions</label><br>
+        <textarea id="recipeInstructions" name="recipeInstructions" rows="4" cols="50"></textarea><br><br>
+
+
+
+        <input type="submit" value="Add to my Cook Book" class="submit">
+    </form> --%>
+</div>
+
+
+</body>
+
+</html>
+
+
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<!DOCTYPE html>
+<html>
+<head>
 <meta charset="ISO-8859-1">
 <title>New recipe form</title>
 </head>
@@ -16,7 +82,7 @@
 		<form:input type="text" path="title" id="title" value="${recipe.title}" placeholder="title"/><br>
 		<!-- recipe description -->
 		<form:textarea path="description" id="description" value="${recipe.description}" placeholder="description"/><br>
-		<%-- <div id="ingredients-list">
+		<div id="ingredients-list">
 			<!-- recipe ingredient -- to create recipeIngredient -- by default one displayed -->
 			<c:forEach items="${recipe.recipeIngredients}" varStatus="status">
 					<div class="ingredient-input">
@@ -30,7 +96,7 @@
 			
 				<%-- 	
 			
-		</div> --%>
+		</div>
 		<!-- to add additional recipe ingredients -->
 		<!-- <button type="button" id="add-ingredient-input">Add ingredient</button> -->
 		
@@ -39,7 +105,7 @@
 	</form:form>
 	
 	
-	<%-- <h1>${recipe.getTitle()}</h1>	
+	<h1>${recipe.getTitle()}</h1>	
 	<p>${recipe.getDescription()}</p>
 	<c:if test="${recipe.getRecipeIngredients().size() != 0}">
 		<c:forEach items="${recipe.getRecipeIngredients()}" var="current">
@@ -48,7 +114,7 @@
 		</c:forEach>
 	</c:if>
 	
-	<a href="new-recipe-ingredient">Add an ingredient</a> --%>
+	<a href="new-recipe-ingredient">Add an ingredient</a>
 	
 	<!-- TODO: add to a separate javascript file -->
 	<!-- <script>
@@ -75,4 +141,4 @@
 	
 	</script> -->
 </body>
-</html>
+</html> --%>
