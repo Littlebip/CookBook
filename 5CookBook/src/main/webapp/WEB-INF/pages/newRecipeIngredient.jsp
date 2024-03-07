@@ -4,10 +4,9 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Add ingredients to your recipe</title>
 </head>
 <body>
-<a href="/" >back to home</a>
 
 </body>
 </html>

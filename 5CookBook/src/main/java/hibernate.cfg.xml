@@ -1,0 +1,25 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- <property name="hbm2ddl.auto">update</property> <property name="hibernate.dialect"> 
+			org.hibernate.dialect.MySQL5Dialect </property> <property name="hibernate.connection.driver_class"> 
+			com.mysql.cj.jdbc.Driver </property> <property name="hibernate.connection.url"> 
+			jdbc:mysql://localhost:3306/cookbookproject?serverTimezone=UTC </property> 
+			<property name="hibernate.connection.username"> root </property> <property 
+			name="hibernate.connection.password"> JEfaisdestables8! </property> <mapping 
+			class="com.GLNT.bean.Recipe" /> <mapping class="com.GLNT.bean.RecipeIngredient" 
+			/> <mapping class="com.GLNT.bean.Ingredient" /> <mapping class="com.GLNT.bean.User" 
+			/> -->
+			
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property>
+
+		<mapping resource="com/GLNT/bean/TestUser.hbm.xml" />
+		<mapping resource="com/GLNT/bean/Recipe.hbm.xml" />
+		<mapping resource="com/GLNT/bean/RecipeIngredient.hbm.xml" />
+		<mapping resource="com/GLNT/bean/Ingredient.hbm.xml" />
+		<mapping resource="com/GLNT/bean/User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

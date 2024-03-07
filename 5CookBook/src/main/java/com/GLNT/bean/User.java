@@ -1,32 +1,29 @@
 package com.GLNT.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+//@Entity
+//@Table(name = "user")
+public class User implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1692198911218736435L;
 
-@Entity
-@Table(name = "user")
-public class User {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(name = "username", nullable = false)
+//	@Column(name = "username", nullable = false)
 	private String username;
 
-	@Column(name = "connexion_status", nullable = true)
+//	@Column(name = "connexion_status", nullable = true)
 	private boolean connexionStatus;
 
-	@OneToMany
-	@JoinColumn(name = "user_id")
+//	@OneToMany
+//	@JoinColumn(name = "user_id")
 	private List<Recipe> recipes;
 
 	public User() {
@@ -91,6 +88,20 @@ public class User {
 	}
 
 	public void setRecipes(ArrayList<Recipe> recipes) {
+		this.recipes = recipes;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @param recipes the recipes to set
+	 */
+	public void setRecipes(List<Recipe> recipes) {
 		this.recipes = recipes;
 	}
 

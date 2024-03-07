@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.GLNT.bean">
+    <class name="Recipe" table="recipe">
+        <id name="id" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="title" column="title" />
+        <property name="description" column="description" />
+        <property name="recipeKcal" column="recipe_kcal" />
+        <set name="recipeIngredients" table="recipe_ingredient" cascade="all">
+            <key column="recipe_id"/>
+            <one-to-many class="com.GLNT.bean.RecipeIngredient"/>
+        </set>
+        <many-to-one name="user" class="com.GLNT.bean.User" fetch="join">
+            <column name="user_id" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,30 +1,30 @@
 package com.GLNT.bean;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import java.io.Serializable;
 
-@Entity
-@Table(name = "recipe_ingredient")
-public class RecipeIngredient {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//@Entity
+//@Table(name = "recipe_ingredient")
+public class RecipeIngredient implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5850865974503448511L;
+
+//	@Id
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@ManyToOne
-	@JoinColumn(name = "recipe_id")
+//	@ManyToOne
+//	@Cascade(CascadeType.SAVE_UPDATE)
+//	@JoinColumn(name = "recipe_id")
 	private Recipe recipe;
 
-	@ManyToOne
-	@JoinColumn(name = "ingredient_id")
+//	@ManyToOne
+//	@Cascade(CascadeType.SAVE_UPDATE)
+//	@JoinColumn(name = "ingredient_id")
 	private Ingredient ingredient;
 
-	@Column(name = "quantity_in_grams")
+//	@Column(name = "quantity_in_grams")
 	private int quantityInGrams;
 
 	public RecipeIngredient() {
@@ -51,6 +51,29 @@ public class RecipeIngredient {
 
 	public void setIngredient(Ingredient ingredient) {
 		this.ingredient = ingredient;
+	}
+
+	public Recipe getRecipe() {
+		return recipe;
+	}
+
+	public void setRecipe(Recipe recipe) {
+		this.recipe = recipe;
+//		recipe.addRecipeIngredient(this);
+	}
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	@Override
