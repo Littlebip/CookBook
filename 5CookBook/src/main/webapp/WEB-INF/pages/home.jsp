@@ -8,7 +8,7 @@
 	<meta charset="UTF-8">
 	<title>Home</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<!-- 	<link rel="stylesheet" href="styles.css"> -->
+	<link rel="stylesheet" href="styles.css" type="text/css"> 
 	<link href="<c:url value="/resources/styles.css"/>" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
@@ -25,7 +25,7 @@
 	</header>
 	<div class="banner-container">
 		<!-- Image de la bannière -->
-		<img src="banner1.jpg" alt="fruits" class="banner-image">
+		<img src="https://cdn.discordapp.com/attachments/1186591715323293706/1213059054239227965/banner1.jpg?ex=65f41848&is=65e1a348&hm=e0a67561ec6e7dd29dff8a3dd52d6b82a51fdf71f48bcbead0c62a0db7c02a20&" alt="fruits" class="banner-image">
 		<!-- Texte sur la bannière -->
 		<div class="banner-text">
 			<p>Chef.</p>
@@ -33,7 +33,10 @@
 		</div>
 	</div>
 	
-	<a href="recipes/new">new recipe</a>
+	<form action="recipes/new">
+      <button type="submit" class="bouton">New recipe</button>
+    </form>
+	
 	
 
 	<div>
@@ -66,7 +69,7 @@
 		</ul>
 	</footer>
 </body>
-<style>
+ <style>
 <%@include file="styles.css"%>
 </style>
 </html>
