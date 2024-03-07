@@ -1,11 +1,10 @@
 <%@ tag language="java" pageEncoding="ISO-8859-1" description="footer tag"%>
 
-<div class="footer">
-  <div class="footer-links">
-    <a href="#"><i class="fab fa-github"></i></a>
-    <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
-  </div>
-  <div class="footer-copyright">
-    This webapp was made with <i class="fas fa-heart"></i> by  <a href="#"><i class="fab fa-linkedin"></i></a>Toutane and <a href="#"><i class="fab fa-linkedin"></i></a>Lucile
-  </div>
-</div>
+<footer class="footer">
+	<ul class="social-icons">
+		<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+		<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+		<li><a href="#"><i class="fab fa-instagram"></i></a></li>
+		<li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+	</ul>
+</footer>

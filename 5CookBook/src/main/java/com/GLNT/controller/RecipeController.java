@@ -40,7 +40,7 @@ public class RecipeController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveRecipe(@ModelAttribute("recipe") Recipe recipe, Model model) {
-		System.out.println(recipe);
+//		System.out.println(recipe);
 //		recipeRepo.save(recipe);
 
 		// temporary !
@@ -56,6 +56,9 @@ public class RecipeController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String showRecipe(@PathVariable("id") int id, Model model) {
 		Recipe recipe = recipeDao.getById(id);
+		List<RecipeIngredient> recipeIngredients = recipeIngredientDao.getAllByRecipeId(id);
+		recipe.setRecipeIngredients(recipeIngredients);
+		recipe.calculateRecipeKcal();
 		model.addAttribute("recipe", recipe);
 
 //		RecipeIngredient recipeIngredient = new RecipeIngredient();
@@ -95,7 +98,7 @@ public class RecipeController {
 	public String saveRecipeIngredient(@PathVariable("id") int id,
 			@ModelAttribute("recipeIngredientDto") RecipeIngredientDto recipeIngredientDto) {
 
-		System.out.println("arrived in save recipe ingredient post method...");
+//		System.out.println("arrived in save recipe ingredient post method...");
 
 		Recipe recipe = recipeDao.getById(id);
 		RecipeIngredient recipeIngredient = new RecipeIngredient();
@@ -103,68 +106,10 @@ public class RecipeController {
 		recipeIngredient.setRecipe(recipe);
 		recipeIngredient.setQuantityInGrams(recipeIngredientDto.getQuantity());
 		recipeIngredientDao.save(recipeIngredient);
-		System.out.println("saved recipe ingredient.");
+//		System.out.println("saved recipe ingredient.");
 		recipe.addRecipeIngredient(recipeIngredient);
 		recipeDao.save(recipe);
-		System.out.println("saved recipe ingredient.");
+//		System.out.println("saved recipe ingredient.");
 		return "redirect:/recipes/" + id;
 	}
-
-//	@GetMapping("/new-recipe-ingredient")
-//	public String displayRecipeIngredientForm(Model model) {
-//		RecipeIngredient recipeIngredient = new RecipeIngredient();
-//
-//		model.addAttribute("recipeIngredient", recipeIngredient);
-//
-//		return "newRecipeIngredient";
-//	}
-//	
-//	@PostMapping("/save-recipe-ingredient")
-//	public String saveRecipeIngredient(@ModelAttribute("recipe") Recipe recipe, Model model) {
-//		System.out.println(recipe);
-//
-//		recipeRepository.saveRecipe(recipe);
-//		System.out.println(recipe.getId());
-//		model.addAttribute("recipe", recipe);
-//		return "test";
-//	}
-
-//	@GetMapping("")
-//	public String displayRecipeIngredientForm(Model model) {
-//
-//		recipe.getRecipeIngredients().add(new RecipeIngredient());
-//
-//		Map<String, Ingredient> ings = DatabaseController.getIngredients();
-////		System.out.println(ings);
-//
-//		model.addAttribute("ingredients", ings);
-//	}
-
-//	for (RecipeIngredient ri : recipe.getRecipeIngredients()) {
-//		System.out.println(ri);
-//
-//		for (Map.Entry<String, Ingredient> ing : DatabaseController.getIngredients().entrySet()) {
-//			if (ri.getIngredient().getName().equals(ing.getKey())) {
-//				ri.setIngredient(ing.getValue());
-//				break;
-//			}
-//		}
-//		ri.setRecipe(recipe);
-//		recipeRepository.saveRecipeIngredient(ri);
-//		System.out.println(ri);
-//
-//	}
-//	recipe.calculateRecipeKcal();
-//	recipeRepository.saveRecipe(recipe);
-//	System.out.println(recipe);
-//	System.out.println(recipe.getRecipeIngredients());
-
-//	Optional<Recipe> optionalRecipe = recipeRepository.findById(id);
-//	if (optionalRecipe.isPresent()) {
-//		Recipe recipe = optionalRecipe.get();
-//		model.addAttribute("recipe", recipe);
-//		return "showRecipe";
-//	} else {
-//		return "recipeNotFound";
-//	}
 }

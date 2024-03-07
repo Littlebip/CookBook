@@ -1,119 +1,209 @@
 @charset "ISO-8859-1";
-<!-- 
+
+<!--
 .footer {
-  background: #F4F4F4;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 100px;
-  padding: 0px 50px;
-  color: rgba(0,0,0,0.3);
+	background: #F4F4F4;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 100px;
+	padding: 0px 50px;
+	color: rgba(0, 0, 0, 0.3);
 }
+
 .footer-links {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
+
 .footer-links a {
-  color: black;
-  opacity: 0.15;
-  text-decoration: none;
-  font-size: 24px;
-  padding: 0px 10px;
+	color: black;
+	opacity: 0.15;
+	text-decoration: none;
+	font-size: 24px;
+	padding: 0px 10px;
 }
+
 .footer-links a:hover {
-  opacity: 1;
+	opacity: 1;
 }
+
 .footer .fa-heart {
-  color: #D23333;
+	color: #D23333;
 }
- -->
- 
- .header  {
-  height: 80px;
-  margin: 0;
-  background :firebrick ; 
+
+-->
+.header {
+	height: 80px;
+	margin: 0;
+	background: firebrick;
 }
+
 .header li {
-  text-align: right;
-  list-style: none;
-  color: white;
-  font-size: 20px;
-  font-weight: bold;
+	text-align: right;
+	list-style: none;
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
 }
 
-.header a{
-  color: white;
-  text-decoration: none;
-}
-.picture{
-  height:100px;
-  margin: 0;
+.header a {
+	color: white;
+	text-decoration: none;
 }
 
- /* CSS pour le conteneur de la bannière */
- .banner-container {
-  position: relative;
-  width: 100%;
+header img {
+	width: 50px;
+	height: 50px;
+}
+
+.picture {
+	height: 100px;
+	margin: 0;
+}
+
+/* CSS pour le conteneur de la bannière */
+.banner-container {
+	position: relative;
+	width: 100%;
 }
 
 /* CSS pour l'image de la bannière */
 .banner-image {
-  width: 100%;
-  height: auto;
+	width: 100%;
+	height: auto;
 }
 
 /* CSS pour le texte sur la bannière */
-.banner-text {
-  position: absolute;
-  top: 50%;
-  left: calc(50% + 80px);
-  transform: translate(-50%, -50%);
-  color: white;
-  font-size: 36px;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Ombre du texte */
+.home-banner-text {
+	position: absolute;
+	top: 50%;
+	left: calc(50% + 80px);
+	transform: translate(-50%, -50%);
+	color: firebrick;
+	font-size: 36px;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre du texte */
 }
 
+.second-banner-text {
+	position: absolute;
+	top: 10%;
+	left: calc(50%);
+	transform: translate(-50%, -50%);
+	color: firebrick;
+	font-size: 36px;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Ombre du texte */
+}
+
+.bouton {
+	display: block;
+	background-color: firebrick;
+	border-radius: 10px;
+	
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	padding: 10px;
+	width: 200px;
+	cursor: pointer;
+}
 
 .form {
-  width: 600px; /* Largeur du formulaire */
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  position: absolute;
-  top: calc(50% + 300px); /* Centrer verticalement, avec une marge par rapport au haut */
-  left: 50%;
-  transform: translate(-50%, -50%); /* Centrer verticalement et horizontalement par rapport au body*/
+	width: 600px; /* Largeur du formulaire */
+	padding: 20px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	position: absolute;
+	top: calc(50% + 300px);
+	/* Centrer verticalement, avec une marge par rapport au haut */
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/* Centrer verticalement et horizontalement par rapport au body*/
 }
 
-.submit{
-  background :firebrick ; 
+.submit {
+	background: firebrick;
 }
-.footer  {
-  height: 50px;
-  margin: 0;
-  background :firebrick ; 
+
+.footer {
+	height: 50px;
+	margin: 0;
+	background: firebrick;
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 }
+
 .social-icons {
-  list-style: none;
-  padding: 0;
+	list-style: none;
+	padding: 0;
 }
+
 .social-icons li {
-  display: inline-block;
-  margin-right: 10px;
+	display: inline-block;
+	margin-right: 10px;
 }
 
 .social-icons li:last-child {
-  margin-right: 0;
+	margin-right: 0;
 }
 
 .social-icons li a {
-  display: block;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  background-color: #fff;
-  color: #cf1526; /* Couleur des icônes */
-  border-radius: 60%;
+	display: block;
+	width: 30px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+	background-color: #fff;
+	color: #cf1526; /* Couleur des icônes */
+	border-radius: 60%;
+}
+
+.main-button {
+	display: block;
+	background-color: firebrick;
+	border-radius: 10px;
+	color: white;
+	text-align: center;
+	font-size: 20px;
+	padding: 10px;
+	width: 200px;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+.main-content {
+	flex-grow: 1;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures the body element is at least as tall as the viewport */
+}
+
+.recipe-title {
+	font-size: 36px;
+}
+
+.recipe-subtitles {
+	font-size: 24px;
+}
+
+.container {
+	width: 80%;
+	margin: 0 auto;
+}
+
+.bottom-space {
+	height: 100px;
 }
