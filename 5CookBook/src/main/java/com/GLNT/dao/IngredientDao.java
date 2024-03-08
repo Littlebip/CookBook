@@ -13,6 +13,8 @@ public class IngredientDao implements CRUDable<Ingredient> {
 
 	public IngredientDao() {
 		super();
+		ingredientMap.put("banana", 0.92);
+		ingredientMap.put("oatmeal", 1.28);
 		ingredientMap.put("cod", 0.77);
 		ingredientMap.put("octopus", 0.81);
 		ingredientMap.put("shrimp", 0.91);
@@ -99,7 +101,6 @@ public class IngredientDao implements CRUDable<Ingredient> {
 		ingredientMap.put("sesame seeds", 6.0);
 		ingredientMap.put("walnut", 7.33);
 		ingredientMap.put("buckwheat", 3.46);
-		ingredientMap.put("oatmeal", 1.28);
 		ingredientMap.put("chinese noodles", 3.51);
 		ingredientMap.put("pasta", 3.65);
 		ingredientMap.put("flour", 3.66);
@@ -154,7 +155,6 @@ public class IngredientDao implements CRUDable<Ingredient> {
 		ingredientMap.put("mushrooms", 0.25);
 		ingredientMap.put("apple", 0.64);
 		ingredientMap.put("apricot", 0.45);
-		ingredientMap.put("banana", 0.92);
 		ingredientMap.put("bluberries", 0.46);
 		ingredientMap.put("cantaloupe", 0.56);
 		ingredientMap.put("cherries", 0.64);

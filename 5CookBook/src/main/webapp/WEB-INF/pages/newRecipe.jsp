@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+<!-- <link rel="stylesheet" href="style.css"> -->
 
 <title>New Recipe</title>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
@@ -44,6 +44,7 @@
 			<input class="bouton" type="submit" value="create" />
 		</form:form>
 	</div>
+	<div class="bottom-space"></div>
 	
 	<component:footer />
 </body>

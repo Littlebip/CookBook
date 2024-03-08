@@ -15,46 +15,29 @@
 <body>
 	<component:navbar />
 	<div class="main-content">
-	<div class="banner-container">
-		<!-- Image de la bannière -->
-		<img src="https://cdn.discordapp.com/attachments/1186591715323293706/1213059054239227965/banner1.jpg?ex=65f41848&is=65e1a348&hm=e0a67561ec6e7dd29dff8a3dd52d6b82a51fdf71f48bcbead0c62a0db7c02a20&" alt="fruits" class="banner-image">
-		<!-- Texte sur la bannière -->
-		<div class="home-banner-text">
-			<p>Chef.</p>
-			<p> Cooking with you, everywhere.</p>
-			<a class="main-button" href="recipes/new">new recipe</a>
+		<div class="banner-container">
+			<!-- Image de la bannière -->
+			<img src="https://cdn.discordapp.com/attachments/1186591715323293706/1213059054239227965/banner1.jpg?ex=65f41848&is=65e1a348&hm=e0a67561ec6e7dd29dff8a3dd52d6b82a51fdf71f48bcbead0c62a0db7c02a20&" alt="fruits" class="banner-image">
+			<!-- Texte sur la bannière -->
+			<div class="home-banner-text">
+				<p>Chef.</p>
+				<p> Cooking with you, everywhere.</p>
+				<a class="main-button" href="recipes/new">new recipe</a>
+			</div>
 		</div>
-	</div>
+		
+		<div>
+			<h2>My recipes</h2>
+			<c:forEach items="${recipes}" var="recipe">
+			    <div class="recipe">
+			        <h3>${recipe.title}</h3>
+			        <%-- <p>${recipe.recipeKcal} kcal</p> --%>
+			        <a href="recipes/${recipe.id}">Have a look</a>
+			    </div>
+			</c:forEach>
+		</div>
+		<div class="bottom-space"></div>
 	
-	<div>
-		<h2>My recipes</h2>
-		<c:forEach items="${recipes}" var="recipe">
-		    <div class="recipe">
-		        <h3>${recipe.title}</h2>
-		        <%-- <p>${recipe.recipeKcal} kcal</p> --%>
-		        <a href="recipes/${recipe.id}">Have a look</a>
-		    </div>
-		</c:forEach>
-	</div>
-	
-
-	<!-- <div>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-			magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-			commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-			nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-			anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-			magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-			commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-			nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-			anim id est laborum.</p>
-		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-			magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-			commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-			nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
-			anim id est laborum.</p>
-	</div> -->
 	</div>
 	<component:footer />
 </body>
