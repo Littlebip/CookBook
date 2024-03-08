@@ -1,5 +1,6 @@
 @charset "ISO-8859-1";
 <!-- 
+
 .footer {
   background: #F4F4F4;
   display: flex;
@@ -26,7 +27,7 @@
 .footer .fa-heart {
   color: #D23333;
 }
- -->
+
  
  .header  {
   height: 80px;
@@ -116,4 +117,4 @@
   background-color: #fff;
   color: #cf1526; /* Couleur des icônes */
   border-radius: 60%;
-}
+} -->

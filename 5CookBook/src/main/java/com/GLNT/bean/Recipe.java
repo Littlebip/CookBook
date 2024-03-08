@@ -65,20 +65,15 @@ public class Recipe implements Serializable {
 	}
 
 	// methods
-
-//	public Recipe(String string, String string2, Ingredient[] ingredients) {
-//		// TODO Auto-generated constructor stub
-//	}
-//
-	// constructor to add
-
 	public void addRecipeIngredient(Ingredient ingredient, int quantityInGrams) {
 		RecipeIngredient ri = new RecipeIngredient(ingredient, quantityInGrams);
 		this.recipeIngredients.add(ri);
+		calculateRecipeKcal();
 	}
 
 	public void addRecipeIngredient(RecipeIngredient recipeIngredient) {
 		this.recipeIngredients.add(recipeIngredient);
+		calculateRecipeKcal();
 	}
 
 	public void calculateRecipeKcal() {

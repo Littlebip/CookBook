@@ -16,14 +16,13 @@ import com.GLNT.dao.IngredientDao;
 import com.GLNT.dao.RecipeDao;
 import com.GLNT.dao.RecipeIngredientDao;
 import com.GLNT.dao.UserDao;
+import com.GLNT.tool.RecipeIngredientDto;
 
 @Controller
 @RequestMapping("/recipes")
 public class RecipeController {
 //	@Autowired
 //	private Repository<Recipe> recipeRepo;
-
-	// new --> :id --> show
 
 	UserDao userDao = new UserDao();
 	IngredientDao ingredientDao = new IngredientDao();
@@ -57,6 +56,9 @@ public class RecipeController {
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public String showRecipe(@PathVariable("id") int id, Model model) {
 		Recipe recipe = recipeDao.getById(id);
+		List<RecipeIngredient> recipeIngredients = recipeIngredientDao.getAllByRecipeId(id);
+		recipe.setRecipeIngredients(recipeIngredients);
+		recipe.calculateRecipeKcal();
 		model.addAttribute("recipe", recipe);
 
 //		RecipeIngredient recipeIngredient = new RecipeIngredient();
@@ -74,81 +76,40 @@ public class RecipeController {
 	@RequestMapping(value = "/{id}/ingredients/new", method = RequestMethod.GET)
 	public String showIngredientForm(@PathVariable("id") int id, Model model) {
 		Recipe recipe = recipeDao.getById(id);
-		recipe.getRecipeIngredients().add(new RecipeIngredient());
-
 		List<Ingredient> ingredientsList = ingredientDao.getAll();
+		RecipeIngredientDto recipeIngredientDto = new RecipeIngredientDto();
+
+//		RecipeIngredient recipeIngredient = new RecipeIngredient();
+//
+//		recipe.addRecipeIngredient(recipeIngredient);
+//		recipeIngredient.setRecipe(recipe);
+//
+//		recipeDao.save(recipe);
+//		recipeIngredientDao.save(recipeIngredient);
+
+		model.addAttribute("recipe", recipe);
 		model.addAttribute("ingredients", ingredientsList);
+		model.addAttribute("recipeIngredientDto", recipeIngredientDto);
 
 		return "newRecipeIngredient";
 	}
 
 	@RequestMapping(value = "/{id}/ingredients/save", method = RequestMethod.POST)
-	public String saveRecipeIngredient(@PathVariable("id") int id, Model model,
-			@ModelAttribute("recipeIngredient") RecipeIngredient recipeIngredient) {
+	public String saveRecipeIngredient(@PathVariable("id") int id,
+			@ModelAttribute("recipeIngredientDto") RecipeIngredientDto recipeIngredientDto) {
+
+//		System.out.println("arrived in save recipe ingredient post method...");
+
 		Recipe recipe = recipeDao.getById(id);
-		System.out.println(recipeIngredient);
+		RecipeIngredient recipeIngredient = new RecipeIngredient();
+		recipeIngredient.setIngredient(ingredientDao.getById(recipeIngredientDto.getIngredientId()));
 		recipeIngredient.setRecipe(recipe);
+		recipeIngredient.setQuantityInGrams(recipeIngredientDto.getQuantity());
 		recipeIngredientDao.save(recipeIngredient);
+//		System.out.println("saved recipe ingredient.");
 		recipe.addRecipeIngredient(recipeIngredient);
 		recipeDao.save(recipe);
-		return "redirect:/recipes/" + recipe.getId();
+//		System.out.println("saved recipe ingredient.");
+		return "redirect:/recipes/" + id;
 	}
-
-//	@GetMapping("/new-recipe-ingredient")
-//	public String displayRecipeIngredientForm(Model model) {
-//		RecipeIngredient recipeIngredient = new RecipeIngredient();
-//
-//		model.addAttribute("recipeIngredient", recipeIngredient);
-//
-//		return "newRecipeIngredient";
-//	}
-//	
-//	@PostMapping("/save-recipe-ingredient")
-//	public String saveRecipeIngredient(@ModelAttribute("recipe") Recipe recipe, Model model) {
-//		System.out.println(recipe);
-//
-//		recipeRepository.saveRecipe(recipe);
-//		System.out.println(recipe.getId());
-//		model.addAttribute("recipe", recipe);
-//		return "test";
-//	}
-
-//	@GetMapping("")
-//	public String displayRecipeIngredientForm(Model model) {
-//
-//		recipe.getRecipeIngredients().add(new RecipeIngredient());
-//
-//		Map<String, Ingredient> ings = DatabaseController.getIngredients();
-////		System.out.println(ings);
-//
-//		model.addAttribute("ingredients", ings);
-//	}
-
-//	for (RecipeIngredient ri : recipe.getRecipeIngredients()) {
-//		System.out.println(ri);
-//
-//		for (Map.Entry<String, Ingredient> ing : DatabaseController.getIngredients().entrySet()) {
-//			if (ri.getIngredient().getName().equals(ing.getKey())) {
-//				ri.setIngredient(ing.getValue());
-//				break;
-//			}
-//		}
-//		ri.setRecipe(recipe);
-//		recipeRepository.saveRecipeIngredient(ri);
-//		System.out.println(ri);
-//
-//	}
-//	recipe.calculateRecipeKcal();
-//	recipeRepository.saveRecipe(recipe);
-//	System.out.println(recipe);
-//	System.out.println(recipe.getRecipeIngredients());
-
-//	Optional<Recipe> optionalRecipe = recipeRepository.findById(id);
-//	if (optionalRecipe.isPresent()) {
-//		Recipe recipe = optionalRecipe.get();
-//		model.addAttribute("recipe", recipe);
-//		return "showRecipe";
-//	} else {
-//		return "recipeNotFound";
-//	}
 }

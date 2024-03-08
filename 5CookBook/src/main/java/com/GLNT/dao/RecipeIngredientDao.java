@@ -35,10 +35,12 @@ public class RecipeIngredientDao implements CRUDable<RecipeIngredient> {
 	// need to add more conditions for completion of data ex recipe missing or
 	// ingredient missing
 	public int save(RecipeIngredient recipeIngredient) {
+//		System.out.println("entering recIng save...");
 		if (recipeIngredient.getId() == 0) {
 			recipeIngredient.setId(recipeIngredients.size() + 1);
 		}
 		recipeIngredients.add(recipeIngredient);
+//		System.out.println("recipe ingredient saved");
 		return recipeIngredient.getId();
 	}
 
@@ -50,10 +52,12 @@ public class RecipeIngredientDao implements CRUDable<RecipeIngredient> {
 
 	// returns all recipeIngredients for a given recipe
 	public List<RecipeIngredient> getAllByRecipeId(int recipeId) {
+//		System.out.println("entering recIng getbyrecipeid...");
 		List<RecipeIngredient> result = new ArrayList<RecipeIngredient>();
 		for (RecipeIngredient ri : recipeIngredients) {
 			if (ri.getRecipe().getId() == recipeId) {
 				result.add(ri);
+//				System.out.println("found a recIng");
 			}
 		}
 		return result;
@@ -61,10 +65,13 @@ public class RecipeIngredientDao implements CRUDable<RecipeIngredient> {
 
 	@Override
 	public RecipeIngredient getById(int id) {
+//		System.out.println("entering recIng getbyid...");
 		RecipeIngredient ri = null;
 		for (RecipeIngredient recipeIngredient : recipeIngredients) {
 			if (recipeIngredient.getId() == id) {
 				ri = recipeIngredient;
+//				System.out.println("found recIng");
+				break;
 			}
 		}
 		return ri;
